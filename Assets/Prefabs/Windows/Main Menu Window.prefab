@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2664605315360448926}
   - component: {fileID: 4970947817353394736}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 1322731459787089179}
   - component: {fileID: 5606094211892937997}
   m_Layer: 5
-  m_Name: Levels Button
+  m_Name: Level Selector Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,8 +1134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 250
-    m_Right: 250
+    m_Left: 230
+    m_Right: 230
     m_Top: 0
     m_Bottom: 100
   m_ChildAlignment: 1
@@ -1289,7 +1289,7 @@ GameObject:
   - component: {fileID: 5405711519902342193}
   - component: {fileID: 1321971925873146020}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 9110503454775732080}
   - component: {fileID: 5854494471244910572}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1412,14 +1412,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  m_Color: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3f18113a534a8544d94b42a95ef80ba4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ce624e3d198e86438d872c3a6b74c39, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

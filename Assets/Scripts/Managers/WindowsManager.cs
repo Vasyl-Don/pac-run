@@ -28,11 +28,9 @@ namespace Managers
             {
                 if (AnyWindowShowing())
                 {
-                    // HIDE THE FUCKING WINDOW
                     var lastWindow = GetLastWindow();
                     if (lastWindow != null)
                         lastWindow.gameObject.SetActive(false);
-                    else Debug.LogWarning("Last window is null");
                 }
                 
                 _windowModels.Add(window);
@@ -53,8 +51,6 @@ namespace Managers
         private WindowModel GetLastWindow()
         {
             var window = _windowModels[_windowModels.Count - 1];
-            Debug.LogWarning($"_windowsModels Count is {_windowModels.Count}");
-            Debug.LogWarning($"window I am trying to get is null == {window == null}");
             return window;
         }
         
