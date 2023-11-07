@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2922292128860495149}
   - component: {fileID: 332482228317725507}
   m_Layer: 5
-  m_Name: Turn Down Volume Button
+  m_Name: Turn Down Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,7 +256,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2922292128860495149}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6340210654678557024}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnDownSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &721988313511849776
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +282,7 @@ GameObject:
   - component: {fileID: 3063675687671160539}
   - component: {fileID: 7477627926342743959}
   m_Layer: 5
-  m_Name: Turn Off/On Volume Button
+  m_Name: Turn Off/On Music Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +389,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3063675687671160539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5835391723873783204}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnOffOnMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1039416144291645620
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +943,7 @@ GameObject:
   - component: {fileID: 5839761605392778669}
   - component: {fileID: 1524112608031886657}
   m_Layer: 5
-  m_Name: Turn Down Volume Button
+  m_Name: Turn Down Music Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,7 +1051,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5839761605392778669}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5835391723873783204}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnDownMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2537847223641772021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1189,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4408360427525830945}
         m_TargetAssemblyTypeName: Buttons.ShowWindowButton, Assembly-CSharp
-        m_MethodName: ChangeWindow
+        m_MethodName: DoChangeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1209,7 +1245,7 @@ GameObject:
   - component: {fileID: 8578141842590772405}
   - component: {fileID: 776016986714136844}
   m_Layer: 5
-  m_Name: Turn Off/On Volume Button
+  m_Name: Turn Off/On Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1316,7 +1352,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8578141842590772405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6340210654678557024}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnOffOnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4164920178429637796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1376,7 @@ GameObject:
   - component: {fileID: 9008161979128406411}
   - component: {fileID: 7067678982833138404}
   - component: {fileID: 5799211801454083925}
+  - component: {fileID: 6340210654678557024}
   m_Layer: 5
   m_Name: Sound Control Panel
   m_TagString: Untagged
@@ -1397,6 +1446,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6340210654678557024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4164920178429637796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c5feae2c140bc9c625a868a041007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volumeText: {fileID: 7192810015193392598}
+  _turnOffOnButtonImage: {fileID: 8578141842590772405}
+  _enabledSprite: {fileID: 21300000, guid: 4ce0634a6bcefab4c8b2dd9468b7a46a, type: 3}
+  _disabledSprite: {fileID: 21300000, guid: b63baeb07a1575b458e8570f910dbc41, type: 3}
 --- !u!1 &4429171598303497253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4134169612690468638}
   - component: {fileID: 7275460694930737259}
+  - component: {fileID: 5835391723873783204}
   m_Layer: 5
   m_Name: Music Control Panel
   m_TagString: Untagged
@@ -1446,6 +1512,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4429171598303497253}
   m_CullTransparentMesh: 1
+--- !u!114 &5835391723873783204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4429171598303497253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c5feae2c140bc9c625a868a041007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volumeText: {fileID: 5851598840930176209}
+  _turnOffOnButtonImage: {fileID: 3063675687671160539}
+  _enabledSprite: {fileID: 21300000, guid: cfeb52c1158468445be82e5c877e4f1a, type: 3}
+  _disabledSprite: {fileID: 21300000, guid: a631e872ceb8c434ead7ead22b772b24, type: 3}
 --- !u!1 &4511411382220268730
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,7 +1541,7 @@ GameObject:
   - component: {fileID: 9147935311963234763}
   - component: {fileID: 7715218135330430008}
   m_Layer: 5
-  m_Name: Turn Up Volume Button
+  m_Name: Turn Up Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1567,7 +1649,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9147935311963234763}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6340210654678557024}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnUpSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4930198458514127191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2016,7 +2110,7 @@ GameObject:
   - component: {fileID: 3985546842282674527}
   - component: {fileID: 3864944313190056024}
   m_Layer: 5
-  m_Name: Turn Up Volume Button
+  m_Name: Turn Up Music Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2124,7 +2218,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3985546842282674527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5835391723873783204}
+        m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
+        m_MethodName: DoTurnUpMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6739862546592847516
 GameObject:
   m_ObjectHideFlags: 0

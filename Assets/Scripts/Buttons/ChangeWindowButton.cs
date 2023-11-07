@@ -19,7 +19,7 @@ namespace Buttons
             _audioManager = AudioManager.Instance;
         }
 
-        public void ChangeWindow()
+        public void DoChangeWindow()
         {
             _audioManager.PlaySound(SoundType.ButtonClick);
             _windowsManager.HideLastWindow();

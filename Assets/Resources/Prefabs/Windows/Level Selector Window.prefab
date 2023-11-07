@@ -3329,7 +3329,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1663190207305050170}
         m_TargetAssemblyTypeName: Buttons.ShowWindowButton, Assembly-CSharp
-        m_MethodName: ChangeWindow
+        m_MethodName: DoChangeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

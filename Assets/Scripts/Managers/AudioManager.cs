@@ -14,11 +14,11 @@ namespace Managers
 
         [SerializeField] private SoundsContainer _soundsContainer;
 
-        public float MusicVolume => _musicAudioSource.volume * 10f;
-        private bool _musicTurnedOn;
+        public float MusicVolume => Mathf.Round(_musicAudioSource.volume * 10f);
+        public bool MusicTurnedOn { get; private set; }
 
-        public float SoundVolume => _soundAudioSource.volume * 10f;
-        private bool _soundTurnedOn;
+        public float SoundVolume => Mathf.Round(_soundAudioSource.volume * 10f);
+        public bool SoundTurnedOn { get; private set; }
 
         private void Start()
         {
@@ -26,10 +26,10 @@ namespace Managers
             // Set audio source volume from saved settings file
 
             // Get info if music and sound is turned on
-            _soundTurnedOn = true;
-            _musicTurnedOn = true;
+            SoundTurnedOn = true;
+            MusicTurnedOn = true;
             // 
-            if (_musicTurnedOn)
+            if (MusicTurnedOn)
             {
                 _musicAudioSource.Play();
             }
@@ -37,7 +37,7 @@ namespace Managers
 
         public void PlaySound(SoundType soundType)
         {
-            if (_soundTurnedOn)
+            if (SoundTurnedOn)
             {
                 var sound = _soundsContainer.Sounds.FirstOrDefault(snd => snd.SoundType == soundType);
                 if (sound != null)
@@ -51,42 +51,43 @@ namespace Managers
 
         public void TurnUpMusic()
         {
-            _musicAudioSource.volume++;
+            _musicAudioSource.volume += 0.1f;
         }
 
         public void TurnDownMusic()
         {
-            _musicAudioSource.volume--;
+            _musicAudioSource.volume -= 0.1f;
         }
 
         public void TurnOffOnMusic()
         {
-            _musicTurnedOn = !_musicTurnedOn;
-            if (!_musicTurnedOn)
+            MusicTurnedOn = !MusicTurnedOn;
+            if (!MusicTurnedOn)
             {
                 _musicAudioSource.Stop();
+                _musicAudioSource.enabled = false;
             }
-            else _musicAudioSource.Play();
+            else
+            {
+                _musicAudioSource.enabled = true;
+                _musicAudioSource.Play();
+            }
         }
 
         public void TurnUpSound()
         {
-            _soundAudioSource.volume++;
+            _soundAudioSource.volume += 0.1f;
         }
 
         public void TurnDownSound()
         {
-            _soundAudioSource.volume--;
+            _soundAudioSource.volume -= 0.1f;
         }
 
         public void TurnOffOnSound()
         {
-            _soundTurnedOn = !_soundTurnedOn;
-            if (!_soundTurnedOn)
-            {
-                _soundAudioSource.Stop();
-            }
-            else _soundAudioSource.Play();
+            SoundTurnedOn = !SoundTurnedOn;
+            _soundAudioSource.enabled = SoundTurnedOn;
         }
     }
 }

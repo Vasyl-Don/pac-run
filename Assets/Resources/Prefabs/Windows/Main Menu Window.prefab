@@ -474,7 +474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5606094211892937997}
         m_TargetAssemblyTypeName: Buttons.ShowWindowButton, Assembly-CSharp
-        m_MethodName: ChangeWindow
+        m_MethodName: DoChangeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -623,7 +623,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8473286250065887795}
         m_TargetAssemblyTypeName: Buttons.ShowWindowButton, Assembly-CSharp
-        m_MethodName: ChangeWindow
+        m_MethodName: DoChangeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
