@@ -3,21 +3,19 @@ using Enums;
 using Helpers;
 using Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Managers
 {
-    public class WindowsManager : Singleton<WindowsManager>
+    public class WindowsManager : Singleton<WindowsManager> 
     {
         private List<WindowModel> _windowModels = new List<WindowModel>();
         private WindowsObjectPool _windowsObjectPool;
-
+        
         private void Start()
         {
             _windowsObjectPool = WindowsObjectPool.Instance;
-            if (!AnyWindowShowing())
-            {
-                ShowWindow(WindowType.MainMenu);
-            }
+            AfterLoadScene();
         }
 
         public void ShowWindow(WindowType windowType)
@@ -32,12 +30,12 @@ namespace Managers
                     if (lastWindow != null)
                         lastWindow.gameObject.SetActive(false);
                 }
-                
+
                 _windowModels.Add(window);
             }
             else Debug.LogWarning($"No window of type {windowType} found in object pool.");
         }
-        
+
         public void HideLastWindow()
         {
             if (AnyWindowShowing())
@@ -50,13 +48,27 @@ namespace Managers
 
         private WindowModel GetLastWindow()
         {
-            var window = _windowModels[_windowModels.Count - 1];
+            var window = _windowModels[^1];
             return window;
         }
-        
+
         private bool AnyWindowShowing()
         {
             return _windowModels.Count > 0;
+        }
+
+        public void BeforeLoadScene()
+        {
+            HideLastWindow();
+            _windowsObjectPool.ClearPool();
+        }
+        
+        public void AfterLoadScene()
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                ShowWindow(WindowType.MainMenu);
+            }
         }
     }
 }

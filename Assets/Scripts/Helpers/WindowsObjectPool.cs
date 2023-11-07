@@ -39,5 +39,14 @@ namespace Helpers
             window.gameObject.SetActive(false);
             _pooledObjects.Add(window);
         }
+
+        public void ClearPool()
+        {
+            foreach (var window in _pooledObjects)
+            {
+                Destroy(window.gameObject);
+            }
+            _pooledObjects.Clear();
+        }
     }
 }

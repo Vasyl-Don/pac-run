@@ -1,6 +1,6 @@
-﻿using Managers;
+﻿using Enums;
+using Managers;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Buttons
@@ -11,9 +11,19 @@ namespace Buttons
         [SerializeField]
         private int _sceneIdToLoad;
 
-        public void LoadSceneById()
+        private AudioManager _audioManager;
+        private SceneLoadManager _sceneLoadManager;
+
+        private void Awake()
         {
-            SceneManager.LoadScene(_sceneIdToLoad);
+            _audioManager = AudioManager.Instance;
+            _sceneLoadManager = SceneLoadManager.Instance;
+        }
+        
+        public void DoLoadScene()
+        {
+            _audioManager.PlaySound(SoundType.ButtonClick);
+            _sceneLoadManager.LoadSceneById(_sceneIdToLoad);
         }
     }
 }
