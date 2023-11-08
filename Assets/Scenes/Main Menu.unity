@@ -172,6 +172,7 @@ MonoBehaviour:
   _musicAudioSource: {fileID: 75970842}
   _soundAudioSource: {fileID: 75970841}
   _soundsContainer: {fileID: 11400000, guid: 0bc581d95e1348844909e6e37c67ab9d, type: 2}
+  _musicContainer: {fileID: 11400000, guid: 6de5a282b5c3bb344adf0b006270d997, type: 2}
 --- !u!82 &75970841
 AudioSource:
   m_ObjectHideFlags: 0
@@ -182,7 +183,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 99348d26b121bdf40bca2ff30b000207, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -278,7 +279,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5b1ed8fbe89154eaf96723b6e5f0aad3, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

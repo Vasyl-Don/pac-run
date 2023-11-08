@@ -13,6 +13,7 @@ namespace Managers
         [SerializeField] private AudioSource _soundAudioSource;
 
         [SerializeField] private SoundsContainer _soundsContainer;
+        [SerializeField] private MusicContainer _musicContainer;
 
         public float MusicVolume => Mathf.Round(_musicAudioSource.volume * 10f);
         public bool MusicTurnedOn { get; private set; }
@@ -22,13 +23,13 @@ namespace Managers
 
         private void Start()
         {
-            _musicAudioSource = GetComponent<AudioSource>();
             // Set audio source volume from saved settings file
 
             // Get info if music and sound is turned on
             SoundTurnedOn = true;
             MusicTurnedOn = true;
             // 
+            PlayBackgroundMusic(MusicType.MainMenuBackground);
             if (MusicTurnedOn)
             {
                 _musicAudioSource.Play();
@@ -37,16 +38,27 @@ namespace Managers
 
         public void PlaySound(SoundType soundType)
         {
-            if (SoundTurnedOn)
+            if (!SoundTurnedOn)
+                return;
+
+            var sound = _soundsContainer.Sounds.FirstOrDefault(snd => snd.SoundType == soundType);
+            if (sound != null)
             {
-                var sound = _soundsContainer.Sounds.FirstOrDefault(snd => snd.SoundType == soundType);
-                if (sound != null)
-                {
-                    _soundAudioSource.clip = sound.AudioClip;
-                    _soundAudioSource.Play();
-                }
-                else Debug.LogWarning($"No sound of type {soundType} found.");
+                _soundAudioSource.clip = sound.AudioClip;
+                _soundAudioSource.Play();
             }
+            else Debug.LogWarning($"No sound of type {soundType} found.");
+        }
+
+        public void PlayBackgroundMusic(MusicType musicType)
+        {
+            var music = _musicContainer.Music.FirstOrDefault(msc => msc.MusicType == musicType);
+            if (music != null)
+            {
+                _musicAudioSource.clip = music.AudioClip;
+                _musicAudioSource.Play();
+            }
+            else Debug.LogWarning($"No music of type {musicType} found.");
         }
 
         public void TurnUpMusic()

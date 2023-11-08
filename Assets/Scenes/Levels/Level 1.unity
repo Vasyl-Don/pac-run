@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 184611575}
   - component: {fileID: 184611578}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Main Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneIdToLoad: 0
+  _musicTypeToPlay: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
