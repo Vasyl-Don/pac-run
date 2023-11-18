@@ -24,7 +24,7 @@ namespace Buttons
         {
             _audioManager.PlaySound(SoundType.ButtonClick);
             _sceneLoadManager.LoadSceneById(_sceneIdToLoad);
-            _audioManager.PlayBackgroundMusic(_musicTypeToPlay);
+            _audioManager.SetBackgroundMusic(_musicTypeToPlay);
         }
     }
 }

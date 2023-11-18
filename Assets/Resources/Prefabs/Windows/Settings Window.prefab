@@ -259,7 +259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6340210654678557024}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnDownSound
+        m_MethodName: DoTurnDownVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -392,7 +392,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5835391723873783204}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnOffOnMusic
+        m_MethodName: DoTurnOffOnVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1054,7 +1054,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5835391723873783204}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnDownMusic
+        m_MethodName: DoTurnDownVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1355,7 +1355,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6340210654678557024}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnOffOnSound
+        m_MethodName: DoTurnOffOnVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1401,7 +1401,7 @@ RectTransform:
   - {fileID: 4245454914990532510}
   - {fileID: 6239459265084477153}
   m_Father: {fileID: 5108504037566348400}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1459,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volumeText: {fileID: 7192810015193392598}
+  _audioClipType: 2
   _turnOffOnButtonImage: {fileID: 8578141842590772405}
   _enabledSprite: {fileID: 21300000, guid: 4ce0634a6bcefab4c8b2dd9468b7a46a, type: 3}
   _disabledSprite: {fileID: 21300000, guid: b63baeb07a1575b458e8570f910dbc41, type: 3}
@@ -1497,7 +1498,7 @@ RectTransform:
   - {fileID: 902432798647405852}
   - {fileID: 5176067022566156101}
   m_Father: {fileID: 5108504037566348400}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1525,6 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volumeText: {fileID: 5851598840930176209}
+  _audioClipType: 1
   _turnOffOnButtonImage: {fileID: 3063675687671160539}
   _enabledSprite: {fileID: 21300000, guid: cfeb52c1158468445be82e5c877e4f1a, type: 3}
   _disabledSprite: {fileID: 21300000, guid: a631e872ceb8c434ead7ead22b772b24, type: 3}
@@ -1652,7 +1654,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6340210654678557024}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnUpSound
+        m_MethodName: DoTurnUpVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1771,8 +1773,8 @@ RectTransform:
   m_Children:
   - {fileID: 9125610779479990932}
   - {fileID: 3652966581232408014}
-  - {fileID: 9008161979128406411}
   - {fileID: 4134169612690468638}
+  - {fileID: 9008161979128406411}
   - {fileID: 1336369074733100990}
   m_Father: {fileID: 5108504038430946603}
   m_RootOrder: 0
@@ -2221,7 +2223,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5835391723873783204}
         m_TargetAssemblyTypeName: Buttons.VolumeControlPanel, Assembly-CSharp
-        m_MethodName: DoTurnUpMusic
+        m_MethodName: DoTurnUpVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

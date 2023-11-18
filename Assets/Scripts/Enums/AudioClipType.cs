@@ -1,6 +1,6 @@
 ﻿namespace Enums
 {
-    public enum AudioType
+    public enum AudioClipType
     {
         None = 0,
         Music = 1,

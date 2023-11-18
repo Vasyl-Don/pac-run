@@ -8,8 +8,25 @@ namespace Helpers
 {
     public class WindowsObjectPool : Singleton<WindowsObjectPool>
     {
-        public List<WindowModel> _prefabsForPool;
-        private List<WindowModel> _pooledObjects = new List<WindowModel>();
+        private readonly List<WindowModel> _prefabsForPool = new();
+        private readonly List<WindowModel> _pooledObjects = new();
+
+        private const string PrefabsFolderPath = "Prefabs/Windows";
+        
+        private void Start()
+        {
+            LoadPrefabs();
+        }
+
+        private void LoadPrefabs()
+        {
+            var prefabs = Resources.LoadAll<WindowModel>(PrefabsFolderPath);
+
+            foreach (var prefab in prefabs)
+            {
+                _prefabsForPool.Add(prefab);
+            }
+        }
 
         public WindowModel GetObjectFromPool(WindowType windowType)
         {
@@ -46,6 +63,7 @@ namespace Helpers
             {
                 Destroy(window.gameObject);
             }
+
             _pooledObjects.Clear();
         }
     }

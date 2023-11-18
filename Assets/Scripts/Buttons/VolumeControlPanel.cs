@@ -11,6 +11,7 @@ namespace Buttons
         private AudioManager _audioManager;
 
         [SerializeField] private TMP_Text _volumeText;
+        [SerializeField] private AudioClipType _audioClipType;
 
         [SerializeField] private Image _turnOffOnButtonImage;
         [SerializeField] private Sprite _enabledSprite;
@@ -23,55 +24,53 @@ namespace Buttons
 
         private void Start()
         {
-            // set correct values of sound and music
-
-            // update sprite
+            UpdateUI();
         }
 
-        public void DoTurnUpMusic()
+        public void DoTurnUpVolume()
         {
             _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnUpMusic();
-            UpdateVolumeText(_audioManager.MusicVolume);
+            _audioManager.TurnUpVolume(_audioClipType);
+            UpdateUI();
         }
 
-        public void DoTurnDownMusic()
+        public void DoTurnDownVolume()
         {
             _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnDownMusic();
-            UpdateVolumeText(_audioManager.MusicVolume);
+            _audioManager.TurnDownVolume(_audioClipType);
+            UpdateUI();
         }
 
-        public void DoTurnOffOnMusic()
+        public void DoTurnOffOnVolume()
         {
             _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnOffOnMusic();
-            UpdateSprite(_audioManager.MusicTurnedOn);
-            UpdateVolumeText(_audioManager.MusicVolume);
+            _audioManager.TurnOffOnVolume(_audioClipType);
+            UpdateUI();
         }
 
-        public void DoTurnUpSound()
+        private void UpdateUI()
         {
-            _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnUpSound();
-            UpdateVolumeText(_audioManager.SoundVolume);
+            var audioEnabled = true;
+            switch (_audioClipType)
+            {
+                case AudioClipType.Music:
+                    audioEnabled = _audioManager.MusicTurnedOn;
+                    UpdateVolumeText(_audioManager.MusicVolume);
+                    break;
+                case AudioClipType.Sound:
+                    audioEnabled = _audioManager.SoundTurnedOn;
+                    UpdateVolumeText(_audioManager.SoundVolume);
+                    break;
+                case AudioClipType.None:
+                    Debug.LogWarning("_audioClipType is None.");
+                    break;
+                default:
+                    Debug.LogWarning("Something wrong with the _audioClipType in VolumeControlPanel.");
+                    break;
+            }
+            UpdateSprite(audioEnabled);
         }
-
-        public void DoTurnDownSound()
-        {
-            _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnDownSound();
-            UpdateVolumeText(_audioManager.SoundVolume);
-        }
-
-        public void DoTurnOffOnSound()
-        {
-            _audioManager.PlaySound(SoundType.ButtonClick);
-            _audioManager.TurnOffOnSound();
-            UpdateSprite(_audioManager.SoundTurnedOn);
-            UpdateVolumeText(_audioManager.SoundVolume);
-        }
-
+        
         private void UpdateVolumeText(float newValue)
         {
             _volumeText.text = newValue.ToString();

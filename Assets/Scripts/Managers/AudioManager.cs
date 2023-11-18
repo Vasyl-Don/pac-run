@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Data;
 using Enums;
 using Helpers;
 using ScriptableObjects;
@@ -7,7 +8,7 @@ using UnityEngine;
 namespace Managers
 {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioManager : Singleton<AudioManager>
+    public class AudioManager : Singleton<AudioManager>, IDataPersistence
     {
         [SerializeField] private AudioSource _musicAudioSource;
         [SerializeField] private AudioSource _soundAudioSource;
@@ -23,17 +24,25 @@ namespace Managers
 
         private void Start()
         {
-            // Set audio source volume from saved settings file
+            SetBackgroundMusic(MusicType.MainMenuBackground);
+        }
 
-            // Get info if music and sound is turned on
-            SoundTurnedOn = true;
-            MusicTurnedOn = true;
-            // 
-            PlayBackgroundMusic(MusicType.MainMenuBackground);
-            if (MusicTurnedOn)
-            {
-                _musicAudioSource.Play();
-            }
+        public void LoadData(GameData data)
+        {
+            _musicAudioSource.volume = data.AudioSettings.MusicVolume;
+            MusicTurnedOn = data.AudioSettings.MusicTurnedOn;
+
+            _soundAudioSource.volume = data.AudioSettings.SoundsVolume;
+            SoundTurnedOn = data.AudioSettings.SoundTurnedOn;
+        }
+
+        public void SaveData(GameData data)
+        {
+            data.AudioSettings.MusicVolume = _musicAudioSource.volume;
+            data.AudioSettings.MusicTurnedOn = MusicTurnedOn;
+
+            data.AudioSettings.SoundsVolume = _soundAudioSource.volume;
+            data.AudioSettings.SoundTurnedOn = SoundTurnedOn;
         }
 
         public void PlaySound(SoundType soundType)
@@ -50,56 +59,87 @@ namespace Managers
             else Debug.LogWarning($"No sound of type {soundType} found.");
         }
 
-        public void PlayBackgroundMusic(MusicType musicType)
+        public void SetBackgroundMusic(MusicType musicType)
         {
             var music = _musicContainer.Music.FirstOrDefault(msc => msc.MusicType == musicType);
             if (music != null)
             {
                 _musicAudioSource.clip = music.AudioClip;
-                _musicAudioSource.Play();
+                if (MusicTurnedOn)
+                    _musicAudioSource.Play();
             }
             else Debug.LogWarning($"No music of type {musicType} found.");
         }
 
-        public void TurnUpMusic()
+        public void TurnUpVolume(AudioClipType audioClipType)
         {
-            _musicAudioSource.volume += 0.1f;
-        }
-
-        public void TurnDownMusic()
-        {
-            _musicAudioSource.volume -= 0.1f;
-        }
-
-        public void TurnOffOnMusic()
-        {
-            MusicTurnedOn = !MusicTurnedOn;
-            if (!MusicTurnedOn)
+            switch (audioClipType)
             {
-                _musicAudioSource.Stop();
-                _musicAudioSource.enabled = false;
-            }
-            else
-            {
-                _musicAudioSource.enabled = true;
-                _musicAudioSource.Play();
+                case AudioClipType.Music:
+                    _musicAudioSource.volume += 0.1f;
+                    break;
+                case AudioClipType.Sound:
+                    _soundAudioSource.volume += 0.1f;
+                    break;
+                case AudioClipType.None:
+                    Debug.LogWarning("Passed clipType parameter is None.");
+                    break;
+                default:
+                    Debug.LogWarning("Not set ClipType. Something went wrong.");
+                    break;
             }
         }
 
-        public void TurnUpSound()
+        public void TurnDownVolume(AudioClipType audioClipType)
         {
-            _soundAudioSource.volume += 0.1f;
+            switch (audioClipType)
+            {
+                case AudioClipType.Music:
+                    _musicAudioSource.volume -= 0.1f;
+                    break;
+                case AudioClipType.Sound:
+                    _soundAudioSource.volume -= 0.1f;
+                    break;
+                case AudioClipType.None:
+                    Debug.LogWarning($"Passed clipType parameter is None.");
+                    break;
+                default:
+                    Debug.LogWarning("Not set ClipType. Something went wrong.");
+                    break;
+            }
         }
 
-        public void TurnDownSound()
+        public void TurnOffOnVolume(AudioClipType audioClipType)
         {
-            _soundAudioSource.volume -= 0.1f;
-        }
+            switch (audioClipType)
+            {
+                case AudioClipType.Music:
+                {
+                    MusicTurnedOn = !MusicTurnedOn;
+                    if (!MusicTurnedOn)
+                    {
+                        _musicAudioSource.Stop();
+                        _musicAudioSource.enabled = false;
+                    }
+                    else
+                    {
+                        _musicAudioSource.enabled = true;
+                        _musicAudioSource.Play();
+                    }
 
-        public void TurnOffOnSound()
-        {
-            SoundTurnedOn = !SoundTurnedOn;
-            _soundAudioSource.enabled = SoundTurnedOn;
+                    break;
+                }
+                case AudioClipType.Sound:
+                    SoundTurnedOn = !SoundTurnedOn;
+                    _soundAudioSource.enabled = SoundTurnedOn;
+                    break;
+                case AudioClipType.None:
+                    Debug.LogWarning($"Passed clipType parameter is None.");
+                    break;
+                default:
+                    Debug.LogWarning("Not set ClipType. Something went wrong.");
+                    break;
+            }
         }
     }
 }
