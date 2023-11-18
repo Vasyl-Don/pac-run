@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Data;
 using Enums;
 using Helpers;
 using ScriptableObjects;
@@ -7,7 +8,7 @@ using UnityEngine;
 namespace Managers
 {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioManager : Singleton<AudioManager>
+    public class AudioManager : Singleton<AudioManager>, IDataPersistence
     {
         [SerializeField] private AudioSource _musicAudioSource;
         [SerializeField] private AudioSource _soundAudioSource;
@@ -23,13 +24,25 @@ namespace Managers
 
         private void Start()
         {
-            // Set audio source volume from saved settings file
-
-            // Get info if music and sound is turned on
-            SoundTurnedOn = true;
-            MusicTurnedOn = false;
-            // 
             SetBackgroundMusic(MusicType.MainMenuBackground);
+        }
+
+        public void LoadData(GameData data)
+        {
+            _musicAudioSource.volume = data.AudioSettings.MusicVolume;
+            MusicTurnedOn = data.AudioSettings.MusicTurnedOn;
+
+            _soundAudioSource.volume = data.AudioSettings.SoundsVolume;
+            SoundTurnedOn = data.AudioSettings.SoundTurnedOn;
+        }
+
+        public void SaveData(GameData data)
+        {
+            data.AudioSettings.MusicVolume = _musicAudioSource.volume;
+            data.AudioSettings.MusicTurnedOn = MusicTurnedOn;
+
+            data.AudioSettings.SoundsVolume = _soundAudioSource.volume;
+            data.AudioSettings.SoundTurnedOn = SoundTurnedOn;
         }
 
         public void PlaySound(SoundType soundType)
