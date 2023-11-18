@@ -9,7 +9,7 @@ namespace Managers
 {
     public class WindowsManager : Singleton<WindowsManager> 
     {
-        private List<WindowModel> _windowModels = new List<WindowModel>();
+        private readonly List<WindowModel> _windowModels = new();
         private WindowsObjectPool _windowsObjectPool;
         
         private void Start()

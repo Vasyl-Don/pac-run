@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Enums;
+﻿using Enums;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Models
 {
@@ -9,14 +7,5 @@ namespace Models
     public class WindowModel : MonoBehaviour
     {
         public WindowType WindowType;
-        
-        [SerializeField]
-        private List<Button> _buttons = new List<Button>();
-        
-        private void Awake()
-        {
-            var buttons = GetComponentsInChildren<Button>();
-            _buttons.AddRange(buttons);
-        }
     }
 }
